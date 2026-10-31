@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fully Bookin' It — Done-For-You Booking System for Local Service Businesses</title>
+<meta name="description" content="Fully Bookin' It installs a 24/7 chat bubble, quote capture, instant lead alerts, and done-for-you follow-up on your existing website — so quotes stop slipping away. $199 setup + $79/month, month to month.">
+<meta property="og:title" content="Fully Bookin' It — More bookings. Less busywork.">
+<meta property="og:description" content="A done-for-you booking system for local service businesses. Live today on a real company's website.">
+<meta property="og:image" content="logo.png">
+<link rel="icon" href="logo.png">
+<style>
+  :root{
+    --bg:#050505; --panel:#101010; --panel2:#161616; --line:#2b2b2b;
+    --gold:#d9a441; --gold2:#f5d67b; --text:#f4f1ea; --muted:#b8b3a8; --green:#3ecf6f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;line-height:1.55}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  .gold{background:linear-gradient(92deg,var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  /* header */
+  header{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:14px;padding:12px 0}
+  .nav img{width:44px;height:44px;border-radius:10px}
+  .brand{font-weight:800;letter-spacing:.4px;font-size:19px}
+  .brand span{color:var(--gold2)}
+  .nav .links{margin-left:auto;display:flex;gap:22px;align-items:center;font-size:15px}
+  .nav .links a{text-decoration:none;color:var(--muted)}
+  .nav .links a:hover{color:var(--text)}
+  .btn{display:inline-block;background:linear-gradient(92deg,var(--gold),var(--gold2));color:#191203;font-weight:700;
+       padding:12px 22px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;font-size:16px}
+  .btn.small{padding:9px 16px;font-size:14px}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid #4a4a4a}
+  .btn.ghost:hover{border-color:var(--gold)}
+  /* hero */
+  .hero{padding:64px 0 48px;background:radial-gradient(900px 420px at 75% -60px,rgba(217,164,65,.16),transparent 60%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .eyebrow{color:var(--gold2);font-size:13px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;margin-bottom:16px}
+  h1{font-size:52px;line-height:1.08;font-weight:850;letter-spacing:-.5px}
+  .hero p.sub{color:var(--muted);font-size:19px;margin:20px 0 28px;max-width:540px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .micro{color:var(--muted);font-size:14px;margin-top:16px}
+  .proof-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;text-align:center}
+  .proof-card img.logo{width:230px;max-width:70%;border-radius:14px}
+  .alert{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:12px;
+         padding:14px 16px;text-align:left;margin-top:18px}
+  .alert b{display:block;font-size:15px}
+  .alert span{color:var(--muted);font-size:14px}
+  .alert .tag{float:right;color:var(--green);font-size:12px;font-weight:700;letter-spacing:1px}
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin-top:52px}
+  .strip .wrap{display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between;color:var(--muted);font-size:15px}
+  .strip b{color:var(--text)}
+  /* sections */
+  section{padding:64px 0}
+  h2{font-size:36px;line-height:1.15;font-weight:820;letter-spacing:-.3px;text-align:center}
+  .lede{color:var(--muted);text-align:center;max-width:640px;margin:14px auto 40px;font-size:17px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .card h3{font-size:19px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15.5px}
+  .card .ico{font-size:26px;margin-bottom:12px;display:block}
+  .pain h3{color:#ff9d7a}
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .step .n{display:inline-flex;width:38px;height:38px;border-radius:50%;border:2px solid var(--gold);color:var(--gold2);
+           align-items:center;justify-content:center;font-weight:800;margin-bottom:14px}
+  .step h3{margin-bottom:8px;font-size:19px}
+  .step p{color:var(--muted);font-size:15.5px}
+  /* live proof */
+  .proof{background:linear-gradient(180deg,rgba(217,164,65,.07),transparent);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .proof-box{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .proof-box h2{text-align:left}
+  .proof-box p{color:var(--muted);margin:14px 0;font-size:16.5px}
+  .trylist{list-style:none;margin:18px 0}
+  .trylist li{padding:8px 0 8px 30px;position:relative;color:var(--text)}
+  .trylist li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+  /* pricing */
+  .price-card{max-width:560px;margin:0 auto;background:var(--panel);border:2px solid var(--gold);border-radius:20px;padding:34px}
+  .price-card .amount{font-size:44px;font-weight:850}
+  .price-card .per{color:var(--muted);font-size:17px}
+  .price-card ul{list-style:none;margin:22px 0}
+  .price-card li{padding:7px 0 7px 30px;position:relative}
+  .price-card li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+  .price-card .fine{color:var(--muted);font-size:14px;margin-top:14px}
+  /* faq / policy */
+  .faq{max-width:760px;margin:0 auto}
+  .faq .card{margin-bottom:14px}
+  .policy{max-width:760px;margin:0 auto;color:var(--muted);font-size:15px}
+  .policy h3{color:var(--text);margin:20px 0 6px;font-size:17px}
+  /* form */
+  .start{background:var(--panel);border:1px solid var(--gold);border-radius:20px;padding:36px;max-width:760px;margin:0 auto}
+  .start h2{margin-bottom:8px}
+  .start p{text-align:center;color:var(--muted);margin-bottom:24px}
+  form{display:grid;gap:12px}
+  input,textarea{background:#0b0b0b;border:1px solid #3a3a3a;border-radius:10px;padding:13px 14px;color:var(--text);font-size:16px;width:100%}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14.5px}
+  .foot{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .foot .lft{display:flex;gap:12px;align-items:center}
+  .foot img{width:38px;height:38px;border-radius:9px}
+  @media (max-width:860px){
+    h1{font-size:38px} h2{font-size:29px}
+    .hero-grid,.proof-box{grid-template-columns:1fr}
+    .grid3,.grid2,.steps{grid-template-columns:1fr}
+    .nav .links a:not(.btn){display:none}
+    .hero{padding:44px 0 36px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <img src="logo.png" alt="Fully Bookin' It logo">
+    <div class="brand">FULLY <span>BOOKIN’ IT</span></div>
+    <nav class="links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn small" href="#get-started">Claim a pilot spot</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Done-for-you booking system · For local service businesses</div>
+      <h1>More bookings.<br><span class="gold">Less busywork.</span></h1>
+      <p class="sub">Someone lands on your website at 9pm, has a question, and can’t book — so they call the next company on Google. Fully Bookin’ It stops that. We install a booking system on <b>your existing site</b> and run it for you: questions answered 24/7, every quote captured, and follow-ups done while you’re out doing the work.</p>
+      <div class="cta-row">
+        <a class="btn" href="#get-started">Claim a pilot spot →</a>
+        <a class="btn ghost" href="https://rlyardpatrol.netlify.app/" target="_blank" rel="noopener">▶ See it live on a real business</a>
+      </div>
+      <p class="micro">Live today on a working service company’s website — not a mockup. Tap the chat bubble in the corner and try it like a customer.</p>
+    </div>
+    <div class="proof-card">
+      <img class="logo" src="logo.png" alt="Fully Bookin' It shield logo">
+      <div class="alert">
+        <span class="tag">EXAMPLE</span>
+        <b>🔔 New lead — website chat</b>
+        <span>“How much for weekly service?” — name &amp; phone captured, alert sent to the owner’s phone in seconds.</span>
+      </div>
+      <div class="alert" style="border-left-color:var(--gold)">
+        <span class="tag" style="color:var(--gold2)">EXAMPLE</span>
+        <b>📋 Quote saved — checkout not finished</b>
+        <span>The customer bailed halfway. The lead didn’t — it’s in the pipeline, and the follow-up chase is already scheduled.</span>
+      </div>
+    </div>
+  </div>
+  <div class="strip">
+    <div class="wrap">
+      <span>⚡ <b>Instant</b> lead alerts to your phone</span>
+      <span>💬 <b>24/7</b> chat answers with your prices</span>
+      <span>🔁 Follow-ups <b>done for you</b></span>
+      <span>🧰 <b>No new website</b> needed</span>
+    </div>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="wrap">
+    <h2>Where service businesses <span class="gold">actually lose jobs</span></h2>
+    <p class="lede">It’s rarely the work. It’s the three leaks between “someone found you” and “job booked” — and all three happen while you’re busy working.</p>
+    <div class="grid3">
+      <div class="card pain"><span class="ico">🌙</span><h3>After-hours questions</h3><p>Most people shop for services at night. If nobody answers “how much?” and “do you cover my town?” in the moment, they don’t wait — they move on.</p></div>
+      <div class="card pain"><span class="ico">🕳️</span><h3>Half-finished quotes</h3><p>A customer starts your quote form, gets distracted, and never finishes. On most sites that lead vanishes — no name, no number, no second chance.</p></div>
+      <div class="card pain"><span class="ico">📵</span><h3>Follow-up that never happens</h3><p>You meant to call that quote back. Then a job ran long, the phone rang twice, and a competitor who followed up in an hour got the work.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="padding-top:8px">
+  <div class="wrap">
+    <h2>What we install <span class="gold">and run for you</span></h2>
+    <p class="lede">One system, built on top of the website you already have. You approve the wording once — we handle the rest.</p>
+    <div class="grid3">
+      <div class="card"><span class="ico">💬</span><h3>24/7 chat bubble</h3><p>Answers your prices, service area, hours, and how your service works — in your words. When a visitor is warm, it captures their name and phone number.</p></div>
+      <div class="card"><span class="ico">🎣</span><h3>Quote capture that can’t leak</h3><p>Every quote request is saved as a lead the moment it starts — even if the customer never finishes booking. No more invisible lost jobs.</p></div>
+      <div class="card"><span class="ico">🔔</span><h3>Instant phone alerts</h3><p>New lead? Your phone buzzes in seconds, not when you check email that night. In this business, the first company to respond usually wins.</p></div>
+      <div class="card"><span class="ico">🔁</span><h3>Done-for-you follow-ups</h3><p>Quotes that don’t book get a polite, persistent chase sequence written for your business. You approve it once; we run it from there.</p></div>
+      <div class="card"><span class="ico">⭐</span><h3>Review requests on autopilot</h3><p>After a job is done, customers get a friendly review request — Google first, then Facebook, then Yelp. Reviews are what put you above the next company in town.</p></div>
+      <div class="card"><span class="ico">📊</span><h3>A report you’ll actually read</h3><p>One short monthly summary: leads in, quotes chased, jobs booked, reviews requested. No dashboard homework, no software to learn.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="padding-top:8px">
+  <div class="wrap">
+    <h2>From first hello <span class="gold">to booked</span></h2>
+    <p class="lede">Getting started takes about 15 minutes of your time. Total.</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Tell us about your business</h3><p>A short intake: your services and prices, the towns you cover, your hours, your logo, and where lead alerts should go. That’s your whole job.</p></div>
+      <div class="step"><span class="n">2</span><h3>We build it, you approve it</h3><p>Within a few days you get a live draft with your prices and your wording. Nothing goes public until you’ve seen it and said yes.</p></div>
+      <div class="step"><span class="n">3</span><h3>Go live — we run it</h3><p>Leads get answered, captured, alerted, and chased. You get the buzz on your phone and show up to do the work. That’s the deal.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap proof-box">
+    <div>
+      <h2>Built by a service business, <span class="gold">for service businesses</span></h2>
+      <p>Fully Bookin’ It wasn’t dreamed up in a marketing agency. It was built first for <b>Rocco &amp; Lucky’s Yard Patrol</b>, a working pet-waste company in Ocean County, New Jersey — because its owner works a day job and kept losing quotes he never even saw.</p>
+      <p>It runs on that company’s real website right now. Don’t take our word for any of this — go use it:</p>
+      <ul class="trylist">
+        <li>Tap the chat bubble and ask it for a price</li>
+        <li>Ask which towns it covers, and its hours</li>
+        <li>Start a quote and notice: it’s captured before checkout</li>
+      </ul>
+      <a class="btn ghost" href="https://rlyardpatrol.netlify.app/" target="_blank" rel="noopener">Try the live system →</a>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:14px">The pipeline behind it</h3>
+      <p style="margin-bottom:10px">Every inquiry lands in one simple pipeline, worked for you:</p>
+      <p style="color:var(--text);font-size:16px;line-height:2">
+        <b>Quote Request</b> → Contacted → Quoted → <b>Chase</b> → <span class="gold"><b>Booked</b></span> → Job Done → Recurring Customer
+      </p>
+      <p style="margin-top:12px">Most small companies only ever see the first step and the last one. The money is in everything between — that middle is exactly what this system works, every day, whether you’re on a job, at work, or asleep.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2>Pilot pricing</h2>
+    <p class="lede">We’re onboarding a small pilot group of service businesses while we prove the system in new markets. Pilot members lock this price.</p>
+    <div class="price-card">
+      <div class="amount">$199 <span class="per">setup</span> + $79<span class="per">/month</span></div>
+      <ul>
+        <li>Chat bubble installed on your existing website</li>
+        <li>Quote/lead capture wired into the pipeline</li>
+        <li>Instant lead alerts to your phone</li>
+        <li>Follow-up chase sequence, written for your business and run for you</li>
+        <li>Automated review requests after each job</li>
+        <li>Monthly lead report — leads, chases, bookings, reviews</li>
+      </ul>
+      <a class="btn" href="#get-started" style="display:block;text-align:center">Claim a pilot spot →</a>
+      <p class="fine">Month to month after setup — no long-term contract, cancel anytime. One recurring customer in most service trades is worth more than $79/month; this system only has to save one quote a month to pay for itself.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:8px">
+  <div class="wrap">
+    <h2>Straight answers</h2>
+    <p class="lede">The questions every owner asks first.</p>
+    <div class="faq">
+      <div class="card"><h3>Do I need a new website?</h3><p>No. Fully Bookin’ It sits on top of the site you already have. If your site can take a small snippet of code — and almost all can — you’re set. No rebuild, no new web guy.</p></div>
+      <div class="card"><h3>I’m not tech-savvy. What do I have to learn?</h3><p>Nothing. That’s the point of done-for-you. You give us 15 minutes of business info, approve one draft, and get alerts on your phone. We operate everything else.</p></div>
+      <div class="card"><h3>What kinds of businesses is this for?</h3><p>Local service businesses that get quote requests: pet services, lawn care, cleaning, window washing, pressure washing, fencing, decks, and similar trades. If your jobs start with “can I get a price?”, it fits.</p></div>
+      <div class="card"><h3>Am I locked into a contract?</h3><p>No. The setup is one-time and the service is month to month. Cancel anytime and it simply stops at the end of that billing period.</p></div>
+      <div class="card"><h3>What don’t you do?</h3><p>We don’t run paid ads, we don’t rebuild websites, and we don’t guarantee a specific number of jobs — nobody honestly can. We capture the demand you already have and follow up like a pro. That’s where most small companies quietly lose the most money.</p></div>
+      <div class="card"><h3>How fast can I be live?</h3><p>Once we have your intake info, expect a draft for your approval within a few business days, and go-live as soon as you approve it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="policies" style="padding-top:8px">
+  <div class="wrap">
+    <h2>The fine print, in plain English</h2>
+    <div class="policy">
+      <h3>What you’re buying</h3>
+      <p>Fully Bookin’ It — Done For You is a digital service: installation and ongoing operation of a lead-capture chat bubble, quote/lead pipeline, lead alerts, follow-up messages, and review requests on your existing website, as described above. Setup is $199 one-time; the service is $79/month, billed monthly.</p>
+      <h3>Delivery</h3>
+      <p>Work begins when your intake information is received. A draft is delivered for your approval, typically within a few business days, and the service goes live on your approval.</p>
+      <h3>Cancellation &amp; refunds</h3>
+      <p>The monthly service is month to month: cancel anytime by emailing us, and it ends at the close of that billing period — no further charges. The setup fee covers installation work and is refundable if we have not yet begun your build; once build work has started, it is not refundable. Monthly fees for a billing period already in progress are not refundable. Questions about a charge? Email us first — we’ll make it right.</p>
+      <h3>Contact</h3>
+      <p>Fully Bookin’ It · Ocean County, New Jersey, USA · Email: <a href="mailto:fullybookinit@gmail.com">fullybookinit@gmail.com</a> · Phone: <a href="tel:+18482401938">848-240-1938</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="get-started" style="padding-top:8px">
+  <div class="wrap">
+    <div class="start">
+      <h2>Let’s fill your calendar</h2>
+      <p>Tell us about your business and we’ll reply from fullybookinit@gmail.com with next steps. No spam, no pressure — if it’s not a fit, we’ll tell you.</p>
+      <form name="pilot-interest" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="pilot-interest">
+        <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="text" name="business" placeholder="Business name &amp; trade (e.g. Smith Lawn Care — lawn care)" required>
+        <input type="email" name="email" placeholder="Your email address" required>
+        <input type="text" name="website" placeholder="Your website (if you have one)">
+        <textarea name="message" rows="3" placeholder="Anything we should know? (optional)"></textarea>
+        <button class="btn" type="submit">Request my pilot spot →</button>
+      </form>
+      <p style="margin-top:16px;font-size:14.5px">Prefer email? <a href="mailto:fullybookinit@gmail.com?subject=Fully%20Bookin%27%20It%20—%20Pilot%20spot">fullybookinit@gmail.com</a> · 848-240-1938</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="lft">
+      <img src="logo.png" alt="Fully Bookin' It logo">
+      <div><b style="color:var(--text)">FULLY BOOKIN’ IT</b><br>Built for the way you work.</div>
+    </div>
+    <div>fullybookinit@gmail.com · 848-240-1938 · Ocean County, NJ</div>
+    <div>© 2026 Fully Bookin’ It. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
